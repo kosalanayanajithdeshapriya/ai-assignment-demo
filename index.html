@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EC9640 AI Assignment 01 - ChatGPT vs Claude Code Generation Demo</title>
+<link rel="stylesheet" href="styles.css?v=12">
+</head>
+<body>
+<header>
+  <h1>EC9640 — Artificial Intelligence — Assignment 01</h1>
+  <h2>Group 05: Comparative Evaluation of ChatGPT and Claude (AI-Assisted Code Generation)</h2>
+</header>
+
+<main>
+
+  <section class="card">
+    <h3>Part I — Tool Comparison</h3>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Attribute</th><th>ChatGPT (OpenAI)</th><th>Claude (Anthropic)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Developer</td><td>OpenAI</td><td>Anthropic</td></tr>
+        <tr><td>First release</td><td>30 Nov 2022</td><td>14 Mar 2023</td></tr>
+        <tr><td>IDE / workflow</td><td>ChatGPT web/API; Codex IDE extension</td><td>Claude web/API; Claude Code (terminal/IDE)</td></tr>
+        <tr><td>Programming languages</td><td>General multi-language; Python used here</td><td>General multi-language; Python used here</td></tr>
+        <tr><td>Offline use</td><td>No — cloud-based</td><td>No — cloud-based</td></tr>
+        <tr><td>Source citations</td><td>Not automatic for plain code answers</td><td>Not automatic for plain code answers</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h3>Step 1 — Copy These Prompts Into Real ChatGPT / Claude</h3>
+    <p class="hint">Open <a href="https://chat.openai.com" target="_blank" rel="noopener">chat.openai.com</a> and <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> in separate tabs. For each task, click "Copy Prompt", paste it into both tools, and copy back whatever Python function they give you.</p>
+    <div class="prompt-grid" id="promptGrid"></div>
+  </section>
+
+  <section class="card">
+    <h3>Step 2 — Paste the AI-Generated Code Back Here</h3>
+    <p class="hint">Keep the exact function name shown in the prompt. Paste the full function body (only the <code>def ...</code> block) for each tool/task combination.</p>
+    <p class="hint warn-hint">⚠ Because copy-paste can strip real spaces/indentation, the prompts above ask the AI to mark indentation with literal <code>&gt;</code> characters instead of spaces (e.g. <code>&gt; return True</code> = one level deep). This app converts those markers back into real Python indentation automatically, so the reconstruction is exact even if whitespace gets stripped in transit. If a tool ignores this and replies with normal spaced code, that's fine too — plain, correctly-indented code still works as-is.</p>
+    <div class="paste-grid" id="pasteGrid"></div>
+  </section>
+
+  <section class="card">
+    <h3>Step 3 — Run Real Python Against the Test Matrix</h3>
+    <div class="controls">
+      <button id="runTestsBtn" class="btn primary" disabled>▶ Run Tests (loading Python engine…)</button>
+      <span id="scoreSummary" class="score"></span>
+    </div>
+    <table class="test-table" id="testTable">
+      <thead>
+        <tr>
+          <th>Task</th><th>Test Input</th><th>Expected</th>
+          <th>ChatGPT Actual</th><th>Claude Actual</th><th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody id="testTableBody"></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h3>Step 4 — Repair Failing Cases With Real Prompting</h3>
+    <p class="hint">After running tests, any failing tool/task combination appears below with an auto-filled repair prompt using the real input/expected/actual values. Copy it into the same tool, paste the corrected function back into Step 2, then re-run tests.</p>
+    <div class="repair-grid" id="repairGrid"></div>
+  </section>
+
+  <section class="card">
+    <h3>Console Log (Demo Narration)</h3>
+    <pre id="consoleLog" class="console-log">Loading Python engine (Pyodide)…</pre>
+  </section>
+
+</main>
+
+<footer>
+  <p>Group 05 — EC9640 Artificial Intelligence — Demo UI for report reproduction (not the official submission report)</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<script src="app.js?v=12"></script>
+</body>
+</html>
