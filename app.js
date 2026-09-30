@@ -31,13 +31,13 @@ const TASKS = [
 
 def has_close_elements(numbers, threshold):
 
-It should return True if any two elements in the list "numbers" are closer
-to each other than "threshold" (i.e. abs(a - b) < threshold for some pair),
-otherwise return False.
+Return True if any two numbers in the list are within the threshold of each
+other, otherwise return False.
 ${MARKER_INSTRUCTIONS}`,
     tests: [
       { argsExpr: "[1.0, 2.0, 3.0], 0.5", label: "([1.0, 2.0, 3.0], 0.5)", expected: false },
       { argsExpr: "[1.0, 2.8, 3.0], 0.3", label: "([1.0, 2.8, 3.0], 0.3)", expected: true },
+      { argsExpr: "[1.0, 1.5], 0.5", label: "([1.0, 1.5], 0.5)  (boundary)", expected: false },
     ],
   },
   {
